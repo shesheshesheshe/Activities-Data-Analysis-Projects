@@ -1,12 +1,15 @@
+
+
 def getColumnNames(indexs, db_name):
     '''
     get a string of all indexed column name
     '''
+    
     column_names = pd.read_sql_query("SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"+db_name+"'", conn1)
 
     if len(indexs)==1:
         return column_names['column_name'][indexs]
-    elif index=='all':
+    elif indexs=='all':
         return column_names['column_name']
     else:    
         output = ''
